@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tools
 {
@@ -16,7 +11,7 @@ namespace Tools
         /// 获取时间戳,单位毫秒
         /// </summary>
         /// <returns>毫秒</returns>
-        public static long GetUnixMilliSeconds()
+        public static long GetMilliTimestanp()
         {
             return (DateTimeOffset.Now.UtcTicks - 621355968000000000) / 10000;
         }
@@ -25,9 +20,9 @@ namespace Tools
         /// 获取时间戳,单位秒
         /// </summary>
         /// <returns>秒</returns>
-        public static long GetUnixSeconds()
+        public static long GetTimestanp()
         {
-            return GetUnixMilliSeconds() / 1000;
+            return GetMilliTimestanp() / 1000;
         }
     }
 }

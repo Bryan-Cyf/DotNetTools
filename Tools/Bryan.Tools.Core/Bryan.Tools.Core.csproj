@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<RootNamespace>Tools</RootNamespace>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 		<Authors>Bryan</Authors>
 		<Description>[工具集]通用，包含各种帮助类及扩展方法</Description>
 		<PackageTags>helper,extesion</PackageTags>

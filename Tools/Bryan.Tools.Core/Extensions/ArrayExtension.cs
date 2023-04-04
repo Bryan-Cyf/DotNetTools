@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// 数组的扩展方法
 /// </summary>
-public static class ArrayExtensions
+public static class ArrayExtension
 {
     public static bool IsIn<T>(this T @this, params T[] list) => list.Contains(@this);
     public static async Task ForEachExt<T>(this IEnumerable<T> @this, Func<T, Task> func)
