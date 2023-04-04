@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>Tools.Cache</RootNamespace>
+		<Version>1.0.4</Version>
+		<Authors>Bryan</Authors>
+		<Description>[工具集]对redis,memory等缓存封装</Description>
+		<PackageTags>cache,redis,memory</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="EasyCaching.Bus.CSRedis" Version="1.7.0" />
+		<PackageReference Include="EasyCaching.Core" Version="1.7.0" />
+		<PackageReference Include="EasyCaching.CSRedis" Version="1.7.0" />
+		<PackageReference Include="EasyCaching.InMemory" Version="1.7.0" />
+		<PackageReference Include="EasyCaching.Serialization.MessagePack" Version="1.7.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="3.1.17" />
+		<PackageReference Include="EasyCaching.HybridCache" Version="1.7.0" />
+		<PackageReference Include="Bryan.Tools.Core" Version="1.0.1" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>bc71f901-677f-4c03-82ac-1803b9207ec8</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Tools.Hangfire" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Middleware\Bryan.Tools.Cache\Bryan.Tools.Cache.csproj" />
+    <ProjectReference Include="..\..\Middleware\Bryan.Tools.ElasticSearch\Bryan.Tools.ElasticSearch.csproj" />
+    <ProjectReference Include="..\..\Middleware\Bryan.Tools.Middleware\Bryan.Tools.Middleware.csproj" />
+    <ProjectReference Include="..\..\Middleware\Bryan.Tools.Mongo\Bryan.Tools.Mongo.csproj" />
+    <ProjectReference Include="..\..\Sdk\Bryan.Tools.SpeechRecognition\Bryan.Tools.SpeechRecognition.csproj" />
+    <ProjectReference Include="..\..\Tools\Bryan.Tools.Configuation\Bryan.Tools.Configuration.csproj" />
+    <ProjectReference Include="..\..\Tools\Bryan.Tools.PinYin\Bryan.Tools.PinYin.csproj" />
+    <ProjectReference Include="..\..\Tools\Bryan.Tools.SnowFlakeId\Bryan.Tools.SnowFlakeId.csproj" />
+    <ProjectReference Include="..\..\Tools\Bryan.Tools.Swagger\Bryan.Tools.Swagger.csproj" />
+  </ItemGroup>
+
+</Project>

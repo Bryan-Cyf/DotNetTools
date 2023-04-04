@@ -1,0 +1,54 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/PinYin/{everything}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get", "Post" ],
+      "DownstreamPathTemplate": "/PinYin/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8181
+        },
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      /* "ServiceName": "OrderServices",*/
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      /*
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },*/
+      "QoSOptions": {
+        //连续发生几次异常后打开断路器
+        "ExceptionsAllowedBeforeBreaking": 2,
+        //断路器恢复时间，单位毫秒
+        "DurationOfBreak": 10000,
+        //请求超时时间，单位毫秒
+        "TimeoutValue": 5000
+      }
+      //缓存设置
+      /*"FileCacheOptions": {
+        "TtlSeconds": 10, //缓存10s（同一个地址请求就返回缓存结果)
+        "Region": "OrderService" //缓存region
+      }*/
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44329",
+    "ServiceDiscoveryProvider": {
+      "Scheme": "http",
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

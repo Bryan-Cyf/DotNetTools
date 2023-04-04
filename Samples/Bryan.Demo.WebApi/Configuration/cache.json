@@ -1,0 +1,8 @@
+{
+  "Cache": {
+    "IsUseRedis": true,
+    "Connections": [
+      "192.168.100.2:6379,password=!!!AAA111,defaultDatabase=13,prefix=test"
+    ]
+  }
+}

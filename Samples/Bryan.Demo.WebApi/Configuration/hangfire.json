@@ -1,0 +1,41 @@
+{
+  "Hangfire": {
+    //是否开启Hangfire服务
+    "IsOpenServer": true,
+
+    //是否打开控制面板
+    "IsOpenDashboard": true,
+
+    //控制面板是否只读
+    "IsDashboardReadOnly": false,
+
+    //URL后缀
+    "RoutePrefix": "/hangfire",
+
+    //服务节点名称
+    "ServerName": "CHENYF",
+
+    //计划拉取间隔 -- 秒
+    "ScheduleInterval": 15,
+
+    //工作队列
+    "Queues": [ "default", "test1", "test2" ],
+
+    //工作者数量
+    "WorkCount": 20,
+
+    //是否开启登陆验证 -- 在hangfire面板+ ·?pwd=· 参数
+    "IsOpenAuthentication": false,
+
+    //登陆密码
+    "Password": "123456",
+
+    //自动删除近7天数据 -- 不配置默认不生效
+    "AutoDeleteTaskLogDay": 7,
+
+    //存储类型 -- 参照 StorageTypeEnum 枚举
+    "StorageType": "Memory",
+
+    "Connection": "Server=192.168.100.3;Port=5432;User Id=ApolloProgram_User;Password=qf0LUpK@;Database=Hangfire_MagpieBridge_DB;"
+  }
+}

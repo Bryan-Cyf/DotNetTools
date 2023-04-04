@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Ocelot" Version="18.0.0" />
+		<PackageReference Include="Ocelot.Cache.CacheManager" Version="18.0.0" />
+		<PackageReference Include="Ocelot.Provider.Consul" Version="18.0.0" />
+		<PackageReference Include="Ocelot.Provider.Polly" Version="18.0.0" />
+	</ItemGroup>
+
+</Project>

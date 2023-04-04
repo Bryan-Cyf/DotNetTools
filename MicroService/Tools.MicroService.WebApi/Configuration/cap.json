@@ -1,0 +1,12 @@
+{
+  "Cap": {
+    "HostName": "192.168.100.3",
+    "Port": 5672,
+    "UserName": "dev",
+    "Password": "123456",
+    "VirtualHost": "dev_vhost",
+    "Connection": "Server=192.168.100.3;Port=3306;User Id=pandora_user;Password=BQP7GplmroHJdY7T;Database=pandora_hangfire;Max Pool Size = 128;Connect Timeout=600000;charset=utf8mb4;SslMode=None;AllowUserVariables=true;",
+    "FailedRetryCount": 2,
+    "FailedRetryInterval": 10
+  }
+}

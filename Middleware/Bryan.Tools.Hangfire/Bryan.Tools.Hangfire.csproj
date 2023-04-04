@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>Tools.Hangfire</RootNamespace>
+		<Version>1.0.2</Version>
+		<Authors>Bryan</Authors>
+		<Description>[工具集]hangfire封装</Description>
+		<PackageTags>hangfire</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Hangfire" Version="1.7.28" />
+		<PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
+		<PackageReference Include="Hangfire.PostgreSql" Version="1.7.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="3.1.17" />
+		<PackageReference Include="Bryan.Tools.Cache" Version="1.0.1" />
+		<PackageReference Include="Bryan.Tools.DependencyInjection" Version="1.0.0" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>Tools.Encrypt</RootNamespace>
+		<Version>1.0.1</Version>
+		<Authors>Bryan</Authors>
+		<Description>[工具集]各种加密方法及扩展</Description>
+		<PackageTags>encrypt</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+</Project>

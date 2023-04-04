@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>Tools.Configuration</RootNamespace>
+		<Version>1.0.1</Version>
+		<Authors>Bryan</Authors>
+		<Description>[工具集]对config读取,携程Apollo,Nacos等配置封装</Description>
+		<PackageTags>config,apollo,nacos</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Com.Ctrip.Framework.Apollo.Configuration" Version="2.4.1.1" />
+		<PackageReference Include="nacos-sdk-csharp.Extensions.Configuration" Version="1.3.2" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+	</ItemGroup>
+
+</Project>

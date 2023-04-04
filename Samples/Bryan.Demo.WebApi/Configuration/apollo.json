@@ -1,0 +1,11 @@
+{
+  "ApolloCenter": {
+    "AppId": "MB.KFAPI.Base",
+    "Secret": "45dd5e9fc19e4389838d8199341aeb35",
+    "Env": "DEV",
+    "MetaServer": "http://192.168.100.32:8080",
+    "ConfigServer": [ "http://192.168.100.32:8080" ],
+    "Namespaces": [ "connection-strings.json", "pro.json", "sys-app.json", "oss.json", "domain.json" ],
+    "Cluster": "default"
+  }
+}

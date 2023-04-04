@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>Tools.NLog</RootNamespace>
+		<Version>1.0.3</Version>
+		<Authors>Bryan</Authors>
+		<Description>[工具集]Nlog使用扩展</Description>
+		<PackageTags>log,nlog,tools</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="NLog.Web.AspNetCore" Version="5.0.0" />
+		<PackageReference Include="NLog.Kafka" Version="0.2.1" />
+	</ItemGroup>
+</Project>

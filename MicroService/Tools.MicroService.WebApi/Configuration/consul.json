@@ -1,0 +1,8 @@
+{
+  "ConsulRegistry": {
+    "ServiceName": "Test",
+    "ServiceAddress": "http://localhost:7236",
+    "ConsulAddress": "http://121.37.21.7:8501",
+    "HealthCheckAddress": "/HealthCheck"
+  }
+}

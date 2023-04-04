@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>Tools.SpeechRecognition</RootNamespace>
+		<Version>1.0.1</Version>
+		<Authors>Bryan</Authors>
+		<Description>[工具集]语言识别封装,包括腾讯云</Description>
+		<PackageTags>automic,speech,recognition</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Bryan.Tools.Core" Version="1.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+		<PackageReference Include="Bryan.Tools.DependencyInjection" Version="1.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.6" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.17" />
+		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="3.1.17" />
+	</ItemGroup>
+
+</Project>

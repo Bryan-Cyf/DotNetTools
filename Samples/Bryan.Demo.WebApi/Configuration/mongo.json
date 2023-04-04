@@ -1,0 +1,7 @@
+{
+  "MongoDB": {
+    "Connection": "mongodb+srv://cyf:qwe025..@cluster0.q4zd6.mongodb.net/?retryWrites=true&w=majority",
+    "DatabaseName": "demo",
+    "IsAutoCreateIndex": true
+  }
+}
