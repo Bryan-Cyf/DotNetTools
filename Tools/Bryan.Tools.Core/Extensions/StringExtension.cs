@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-public static class StringExt
+public static class StringExtension
 {
     public static bool IsNullOrEmpty(this string @this)
     {

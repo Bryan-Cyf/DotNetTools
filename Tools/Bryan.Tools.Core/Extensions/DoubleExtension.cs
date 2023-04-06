@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-public static class DoubleExt
+public static class DoubleExtension
 {
     /// <summary>
     /// 时间戳(秒)转成北京时间

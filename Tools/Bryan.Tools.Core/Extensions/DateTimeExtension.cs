@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-public static class DateTimeExt
+public static class DateTimeExtension
 {
     private static readonly long _utcTicks = 621355968000000000;
     private static readonly DateTime _utcDateTime = new System.DateTime(1970, 1, 1);

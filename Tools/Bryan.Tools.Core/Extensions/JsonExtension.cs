@@ -1,7 +1,7 @@
 ﻿using System;
 using Tools;
 
-public static class JsonExtensions
+public static class JsonExtension
 {
     public static string ToJson(this object obj)
     {
