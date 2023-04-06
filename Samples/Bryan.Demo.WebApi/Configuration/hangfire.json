@@ -1,41 +1,39 @@
 {
   "Hangfire": {
-    //ÊÇ·ñ¿ªÆôHangfire·şÎñ
+    //æ˜¯å¦å¼€å¯HangfireæœåŠ¡
     "IsOpenServer": true,
 
-    //ÊÇ·ñ´ò¿ª¿ØÖÆÃæ°å
+    //æ˜¯å¦æ‰“å¼€æ§åˆ¶é¢æ¿
     "IsOpenDashboard": true,
 
-    //¿ØÖÆÃæ°åÊÇ·ñÖ»¶Á
+    //æ§åˆ¶é¢æ¿æ˜¯å¦åªè¯»
     "IsDashboardReadOnly": false,
 
-    //URLºó×º
+    //æ˜¯å¦å¼€å¯ç™»é™†æ ¡éªŒ-- åœ¨hangfireé¢æ¿+ Â·?pwd=Â· å‚æ•°
+    "IsOpenAuthentication": true,
+
+    //URLåç¼€
     "RoutePrefix": "/hangfire",
 
-    //·şÎñ½ÚµãÃû³Æ
-    "ServerName": "CHENYF",
-
-    //¼Æ»®À­È¡¼ä¸ô -- Ãë
+    //è®¡åˆ’æ‹‰å–é—´éš” -- å•ä½ç§’
     "ScheduleInterval": 15,
 
-    //¹¤×÷¶ÓÁĞ
-    "Queues": [ "default", "test1", "test2" ],
+    //å·¥ä½œé˜Ÿåˆ—
+    "Queues": [ "default", "schedule" ],
 
-    //¹¤×÷ÕßÊıÁ¿
+    //å·¥ä½œè€…æ•°ï¿½?
     "WorkCount": 20,
 
-    //ÊÇ·ñ¿ªÆôµÇÂ½ÑéÖ¤ -- ÔÚhangfireÃæ°å+ ¡¤?pwd=¡¤ ²ÎÊı
-    "IsOpenAuthentication": false,
-
-    //µÇÂ½ÃÜÂë
+    //ç™»é™†å¯†ç 
     "Password": "123456",
 
-    //×Ô¶¯É¾³ı½ü7ÌìÊı¾İ -- ²»ÅäÖÃÄ¬ÈÏ²»ÉúĞ§
+    //è‡ªåŠ¨åˆ é™¤-- ä¸é…ç½®é»˜è®¤ä¸ç”Ÿæ•ˆ
     "AutoDeleteTaskLogDay": 7,
 
-    //´æ´¢ÀàĞÍ -- ²ÎÕÕ StorageTypeEnum Ã¶¾Ù
+    //å­˜å‚¨ç±»å‹ -- å‚ç…§ StorageTypeEnum æšä¸¾
+    //å¯é…ç½®- Memory/PostgreSql/MySql
     "StorageType": "Memory",
 
-    "Connection": "Server=192.168.100.3;Port=5432;User Id=ApolloProgram_User;Password=qf0LUpK@;Database=Hangfire_MagpieBridge_DB;"
+    "Connection": "server=127.0.0.1;uid=root;pwd=root;database={0};Allow User Variables=True"
   }
 }

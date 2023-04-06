@@ -11,9 +11,10 @@
 	<ItemGroup>
 		<PackageReference Include="Hangfire" Version="1.7.28" />
 		<PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
+		<PackageReference Include="Hangfire.MySqlStorage" Version="2.0.3" />
 		<PackageReference Include="Hangfire.PostgreSql" Version="1.7.0" />
-		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="3.1.17" />
-		<PackageReference Include="Bryan.Tools.Cache" Version="1.0.1" />
-		<PackageReference Include="Bryan.Tools.DependencyInjection" Version="1.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="3.1.7" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.7" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.7" />
 	</ItemGroup>
 </Project>

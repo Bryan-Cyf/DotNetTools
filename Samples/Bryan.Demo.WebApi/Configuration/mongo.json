@@ -1,6 +1,6 @@
 {
   "MongoDB": {
-    "Connection": "mongodb+srv://cyf:qwe025..@cluster0.q4zd6.mongodb.net/?retryWrites=true&w=majority",
+    "Connection": "connection",
     "DatabaseName": "demo",
     "IsAutoCreateIndex": true
   }

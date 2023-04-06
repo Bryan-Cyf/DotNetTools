@@ -14,7 +14,7 @@ namespace Tools.Hangfire
         /// <summary>
         /// 是否开启服务
         /// </summary>
-        public bool IsOpenServer { get; set; } = true;
+        public bool IsOpenServer { get; set; }
 
         /// <summary>
         /// 是否开启面板
@@ -85,7 +85,7 @@ namespace Tools.Hangfire
         /// <summary>
         /// 默认的userName
         /// </summary>
-        public static string DefaultUserName => $"Hangfire_HostName({Environment.MachineName})_PID({Process.GetCurrentProcess().Id})";
+        public static string DefaultUserName => $"Host({Environment.MachineName})_PID({Process.GetCurrentProcess().Id})";
 
     }
 }

@@ -1,6 +1,6 @@
 {
   "Elastic": {
-    "Connection": "http://121.37.21.7:9200",
+    "Connection": "http://localhost:9200",
     "UserName": "",
     "Password": ""
   }

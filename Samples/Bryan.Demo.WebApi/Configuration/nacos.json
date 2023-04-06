@@ -1,7 +1,7 @@
 {
   "Nacos": {
     "Namespace": "313eb2a3-3283-4609-a1da-73e3d63ace99", // Please set the value of Namespace ID !!!!!!!!
-    "ServerAddresses": [ "http://121.37.21.7:8548" ],
+    "ServerAddresses": [ "http://localhost:8548" ],
     "UserName": "nacos",
     "Password": "nacos",
     "AccessKey": "",

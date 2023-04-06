@@ -1,6 +1,6 @@
 {
   "SpeechRecognition": {
-    "SecretId": "AKID8nR5Ud5FkzhA5mlrFn6E8arvrZ3IRcmh",
-    "SecretKey": "pClRWHnAMJzRntkRikWaaKNH6gVmosbC"
+    "SecretId": "secret",
+    "SecretKey": "secretkey"
   }
 }

@@ -2,10 +2,7 @@
 using Hangfire.Dashboard;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using Tools.Cache;
 
 namespace Tools.Hangfire
 {

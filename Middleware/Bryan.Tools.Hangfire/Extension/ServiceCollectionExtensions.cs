@@ -6,58 +6,61 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Linq;
-using Tools.Dependency;
 using Tools.Hangfire;
 
-public static class ServiceCollectionExtensions
+namespace Microsoft.Extensions.DependencyInjection
 {
-    public static IServiceCollection AddHangfire(this IServiceCollection services, IConfiguration configuration, Action<HangfireOptions> configure = null, string sectionName = null)
+    public static class ServiceCollectionExtensions
     {
-        sectionName ??= HangfireOptions.SectionName;
-
-        services.AddOptions<HangfireOptions>()
-            .Bind(configuration.GetSection(sectionName))
-            .ValidateDataAnnotations();
-
-        services.PostConfigure<HangfireOptions>(x =>
+        public static IServiceCollection AddHangfire(this IServiceCollection services, IConfiguration configuration, Action<HangfireOptions> configure = null, string sectionName = null)
         {
-            configure?.Invoke(x);
-        });
+            sectionName ??= HangfireOptions.SectionName;
 
-        var options = configuration.GetSection(HangfireOptions.SectionName).Get<HangfireOptions>();
+            services.AddOptions<HangfireOptions>()
+                .Bind(configuration.GetSection(sectionName))
+                .ValidateDataAnnotations();
 
-        if (options.IsOpenServer)
-        {
-            services.AddHangfire(x =>
+            services.PostConfigure<HangfireOptions>(x =>
             {
-                x.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                 .UseSimpleAssemblyNameTypeSerializer()
-                 .UseRecommendedSerializerSettings()
-                 .UseStorage(options);
+                configure?.Invoke(x);
             });
 
-            services.AddHangfireServer(x =>
-            {
-                x.ServerName = options.ServerName ?? HangfireOptions.DefaultUserName;
-                x.WorkerCount = options.WorkCount;
-                x.SchedulePollingInterval = TimeSpan.FromSeconds(options.ScheduleInterval);
-                x.Queues = options.Queues;
-            });
+            var options = configuration.GetSection(HangfireOptions.SectionName).Get<HangfireOptions>() ?? new HangfireOptions();
+            configure?.Invoke(options);
 
-            services.AddSingleton<IStartupFilter, HangfireServerStartupFilter>();
-            //自动注册定时任务
-            services.AddSingleton<IHostedService, HangfireRecurringHostService>();
-
-            var types = DiHelper.GetTypes(typeof(IHangfireReccuring));
-            if (types != null && types.Any())
+            if (options.IsOpenServer)
             {
-                foreach (var type in types)
+                services.AddHangfire(x =>
                 {
-                    services.TryAddSingleton(typeof(IHangfireReccuring), type);
+                    x.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                     .UseSimpleAssemblyNameTypeSerializer()
+                     .UseRecommendedSerializerSettings()
+                     .UseStorage(options);
+                });
+
+                services.AddHangfireServer(x =>
+                {
+                    x.ServerName = options.ServerName ?? HangfireOptions.DefaultUserName;
+                    x.WorkerCount = options.WorkCount > 0 ? options.WorkCount : Math.Min(Environment.ProcessorCount * 5, 20);
+                    x.SchedulePollingInterval = TimeSpan.FromSeconds(options.ScheduleInterval);
+                    x.Queues = options.Queues ?? new string[] { "default" };
+                });
+
+                services.AddSingleton<IStartupFilter, HangfireServerStartupFilter>();
+                //自动注册定时任务
+                services.AddSingleton<IHostedService, HangfireRecurringHostService>();
+
+                var types = DiHelper.GetTypes(typeof(IHangfireReccuring));
+                if (types != null && types.Any())
+                {
+                    foreach (var type in types)
+                    {
+                        services.TryAddSingleton(typeof(IHangfireReccuring), type);
+                    }
                 }
             }
-        }
 
-        return services;
+            return services;
+        }
     }
 }
