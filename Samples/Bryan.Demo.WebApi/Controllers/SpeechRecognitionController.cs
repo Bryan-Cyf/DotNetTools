@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Tools.SpeechRecognition;
 
-namespace Helper.WebApi.Test.Controllers
+namespace Bryan.Demo.WebApi.Controllers
 {
     public class SpeechRecognitionController : BaseController
     {

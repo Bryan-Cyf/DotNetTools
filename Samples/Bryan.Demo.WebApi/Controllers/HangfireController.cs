@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Tools.Hangfire;
 
-namespace Helper.WebApi.Test.Controllers
+namespace Bryan.Demo.WebApi.Controllers
 {
     public class TimerController : BaseController
     {

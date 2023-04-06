@@ -2,7 +2,7 @@
 using Nest;
 using Tools.Elastic;
 
-namespace Helper.WebApi.Test.Controllers
+namespace Bryan.Demo.WebApi.Controllers
 {
     public class ElasticController : BaseController
     {

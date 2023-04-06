@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Helper.WebApi.Test.Controllers
+namespace Bryan.Demo.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]

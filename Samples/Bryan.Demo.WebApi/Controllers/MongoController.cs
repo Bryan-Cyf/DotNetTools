@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using Tools.Mongo;
 
-namespace Helper.WebApi.Test.Controllers
+namespace Bryan.Demo.WebApi.Controllers
 {
     public class MongoController : BaseController
     {
