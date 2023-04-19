@@ -25,7 +25,7 @@ namespace Tools.Hangfire
                 var password = httpContext.Request.Query[HangfireConst.PasswordQuery].FirstOrDefault();
                 if (password == HangfireConst.Password)
                 {
-                    var tokenValue = Guid.NewGuid().ToString();
+                    var tokenValue = HangfireConst.Password.ToMD5();
                     httpContext.Response.Cookies.Append(HangfireConst.TokenKey, tokenValue, new CookieOptions() { Expires = DateTimeOffset.Now.AddDays(1) });
                     MemoryCacheHelper.Set(HangfireConst.TokenKey, tokenValue, TimeSpan.FromDays(1));
                     isValidAuthorize = true;
@@ -52,8 +52,8 @@ namespace Tools.Hangfire
             bool result;
             try
             {
-                var cacheToken = MemoryCacheHelper.GetString(HangfireConst.TokenKey);
-                result = cacheToken == token;
+                var tokenValue = HangfireConst.Password.ToMD5();
+                result = tokenValue == token;
             }
             catch
             {
