@@ -4,6 +4,9 @@ using MongoDB.Driver;
 
 namespace Bryan.Demo.WebApi.Controllers
 {
+    /// <summary>
+    /// 缓存
+    /// </summary>
     public class CacheController : BaseController
     {
         private readonly IEasyMemoryCache _memory;

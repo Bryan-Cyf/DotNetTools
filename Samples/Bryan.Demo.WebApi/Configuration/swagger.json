@@ -1,6 +1,7 @@
 {
   "Swagger": {
     "IsOpen": true,
-    "RoutePrefix": "swagger"
+    "RoutePrefix": "swagger",
+    "IncludeXmlComments": [ "Bryan.Demo.WebApi.xml" ]
   }
 }
