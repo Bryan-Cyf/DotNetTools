@@ -6,6 +6,7 @@ config.AddConfigurationFolder();
 //config.AddNacos();
 config.AddSnowFlakeId();
 
+builder.Services.AddServiceAccessor();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddException();
@@ -13,8 +14,8 @@ builder.Services.AddException();
 //builder.Services.AddElastic(config);
 builder.Services.AddSwagger();
 builder.Services.AddSpeechRecognition();
-//builder.Services.AddHangfire(config);
-//builder.Services.AddCaching(config);
+builder.Services.AddHangfire(config);
+//builder.Services.AddCaching();
 
 var app = builder.Build();
 app.UseHttpsRedirection();

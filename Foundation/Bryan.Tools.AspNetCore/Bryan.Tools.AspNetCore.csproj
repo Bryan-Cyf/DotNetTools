@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<RootNamespace>Tools.AspNetCore</RootNamespace>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Bryan</Authors>
 		<Description>[基础设施]AspNetCore扩展封裝</Description>
 		<PackageTags>AspNetCore</PackageTags>

@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using MessagePack.Resolvers;
 using Tools.Cache;
+using System.Collections.Generic;
 
 public static class ServiceCollectionExtensions
 {
@@ -12,11 +13,28 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services"></param>
     /// <returns></returns>
-    public static IServiceCollection AddCaching(this IServiceCollection services, IConfiguration configuration, Action<CacheOptions> configure = null)
+    public static IServiceCollection AddCaching(this IServiceCollection services, string sectionName = CacheOptions.SectionName, Action<CacheOptions> configure = null)
     {
-        //注入配置
+        using ServiceProvider provider = services.BuildServiceProvider();
+        IConfigurationSection section = (provider.GetRequiredService<IConfiguration>() ?? throw new ArgumentNullException("IConfiguration")).GetSection(sectionName);
+        if (!section.Exists())
+        {
+            throw new Exception($"Config file not exist {sectionName} section.");
+        }
+        CacheOptions option = section.Get<CacheOptions>();
+        if (option == null)
+        {
+            throw new Exception($"Get {sectionName} option from config file failed.");
+        }
+
+        option.Connections ??= new List<string>();
+        if (option.IsUseRedis && !option.Connections.Any())
+        {
+            throw new Exception($"Redis链接字符串不能为空");
+        }
+
         services.AddOptions<CacheOptions>()
-            .Bind(configuration.GetSection(CacheOptions.SectionName))
+            .Bind(section)
             .ValidateDataAnnotations();
 
         services.PostConfigure<CacheOptions>(x =>
@@ -25,10 +43,11 @@ public static class ServiceCollectionExtensions
         });
 
         services.AddSingleton<IEasyMemoryCache, MemoryEasyManager>();
-        services.AddSingleton<IEasyRedisCache, RedisEasyManager>();
-        services.AddSingleton<IEasyHybirdCache, HybirdEasyManager>();
-
-        var options = configuration.GetSection(CacheOptions.SectionName).Get<CacheOptions>();
+        if (option.IsUseRedis)
+        {
+            services.AddSingleton<IEasyRedisCache, RedisEasyManager>();
+            services.AddSingleton<IEasyHybirdCache, HybirdEasyManager>();
+        }
 
         services.AddEasyCaching(x =>
         {
@@ -36,10 +55,10 @@ public static class ServiceCollectionExtensions
             {
                 x.SerializerName = CacheConst.SerializerName;
                 //数据量大小限制
-                x.DBConfig.SizeLimit = options?.MemorySizeLimit;
+                x.DBConfig.SizeLimit = option?.MemorySizeLimit;
             }, CacheConst.Memmory);
 
-            if (options != null && options.IsUseRedis && options.Connections != null && options.Connections.Any())
+            if (option.IsUseRedis)
             {
                 x.UseCSRedis(x =>
                 {
@@ -50,7 +69,7 @@ public static class ServiceCollectionExtensions
                     x.MaxRdSecond = 0;
                     // 没有获取到互斥锁时的休眠时间。默认值:300毫秒
                     x.SleepMs = 300;
-                    x.DBConfig.ConnectionStrings = options.Connections;
+                    x.DBConfig.ConnectionStrings = option.Connections;
                 }, CacheConst.CsRedis);
 
                 x.UseHybrid(config =>
@@ -63,7 +82,7 @@ public static class ServiceCollectionExtensions
 
                 x.WithCSRedisBus(x =>
                 {
-                    x.ConnectionStrings = options.Connections;
+                    x.ConnectionStrings = option.Connections;
                 });
             }
 
@@ -75,10 +94,12 @@ public static class ServiceCollectionExtensions
             }, CacheConst.SerializerName);
 
         });
-        if (options != null && options.IsUseRedis && options.Connections != null && options.Connections.Any())
+
+        if (option.IsUseRedis)
         {
-            RedisHelper.Initialization(new CSRedis.CSRedisClient(options.Connections.First()));
+            RedisHelper.Initialization(new CSRedis.CSRedisClient(option.Connections.First()));
         }
+
         return services;
     }
 }

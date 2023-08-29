@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Foundation\Bryan.Tools.AspNetCore\Bryan.Tools.AspNetCore.csproj" />
     <ProjectReference Include="..\..\Middleware\Bryan.Tools.Cache\Bryan.Tools.Cache.csproj" />
     <ProjectReference Include="..\..\Middleware\Bryan.Tools.ElasticSearch\Bryan.Tools.ElasticSearch.csproj" />
     <ProjectReference Include="..\..\Middleware\Bryan.Tools.Middleware\Bryan.Tools.Middleware.csproj" />
