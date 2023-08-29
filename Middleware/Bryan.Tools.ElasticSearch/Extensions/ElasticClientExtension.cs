@@ -35,11 +35,9 @@ namespace Tools.Elastic
             }
         }
 
-        public static ElasticClient CreateClient(this IConfiguration configuration)
+        public static ElasticClient CreateClient(this ElasticOptions option)
         {
-            var config = configuration.GetSection(ElasticOptions.SectionName).Get<ElasticOptions>();
-
-            var uris = config.Uris;
+            var uris = option.Uris;
             ConnectionSettings connectionSetting;
             if (uris.Count == 1)
             {
@@ -52,8 +50,8 @@ namespace Tools.Elastic
                 connectionSetting = new ConnectionSettings(connectionPool);
             }
 
-            if (!string.IsNullOrWhiteSpace(config.UserName) && !string.IsNullOrWhiteSpace(config.Password))
-                connectionSetting.BasicAuthentication(config.UserName, config.Password);
+            if (!string.IsNullOrWhiteSpace(option.UserName) && !string.IsNullOrWhiteSpace(option.Password))
+                connectionSetting.BasicAuthentication(option.UserName, option.Password);
 
             var client = new ElasticClient(connectionSetting);
             return client;

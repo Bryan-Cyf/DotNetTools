@@ -10,13 +10,23 @@ using Tools.Elastic;
 
 public static class ServiceCollectionExtensions
 {
-    public static void AddElastic(this IServiceCollection services, IConfiguration configuration, Action<ElasticOptions> configure = null, string sectionName = null)
+    public static void AddElastic(this IServiceCollection services, string sectionName = ElasticOptions.SectionName, Action<ElasticOptions> configure = null)
     {
-        sectionName ??= ElasticOptions.SectionName;
+        using ServiceProvider provider = services.BuildServiceProvider();
+        IConfigurationSection section = (provider.GetRequiredService<IConfiguration>() ?? throw new ArgumentNullException("IConfiguration")).GetSection(sectionName);
+        if (!section.Exists())
+        {
+            throw new Exception($"Config file not exist {sectionName} section.");
+        }
+        ElasticOptions option = section.Get<ElasticOptions>();
+        if (option == null)
+        {
+            throw new Exception($"Get {sectionName} option from config file failed.");
+        }
 
         //注入ES配置
         services.AddOptions<ElasticOptions>()
-            .Bind(configuration.GetSection(sectionName))
+            .Bind(section)
             .ValidateDataAnnotations();
 
         services.PostConfigure<ElasticOptions>(x =>
@@ -24,9 +34,7 @@ public static class ServiceCollectionExtensions
             configure?.Invoke(x);
         });
 
-        ElasticClient client = configuration.CreateClient();
-
-        services.AddSingleton<IElasticClient>(client);
+        services.AddSingleton<IElasticClient>(option.CreateClient());
 
         services.AddSingleton(typeof(IElasticRepository<>), typeof(ElasticRepository<>));
 
