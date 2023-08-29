@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<RootNamespace>Tools.Cache</RootNamespace>
-		<Version>1.0.4</Version>
+		<Version>1.0.5</Version>
 		<Authors>Bryan</Authors>
 		<Description>[工具集]对redis,memory等缓存封装</Description>
 		<PackageTags>cache,redis,memory</PackageTags>

@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<RootNamespace>Tools.Mongo</RootNamespace>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 		<Authors>Bryan</Authors>
 		<Description>[工具集]mongodb数据库帮助类,包含仓库类和一些常用方法,自动服务注入</Description>
 		<PackageTags>mongo,repository</PackageTags>
