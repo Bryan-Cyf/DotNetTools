@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>Tools.AspNetCore</RootNamespace>
+		<Version>1.0.0</Version>
+		<Authors>Bryan</Authors>
+		<Description>[基础设施]AspNetCore扩展封裝</Description>
+		<PackageTags>AspNetCore</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.1.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="3.1.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.0" />
+	</ItemGroup>
+</Project>

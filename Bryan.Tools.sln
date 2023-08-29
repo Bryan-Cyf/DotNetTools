@@ -64,6 +64,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bryan.Tools.KodCloud", "Sdk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bryan.Tools.Hangfire", "Middleware\Bryan.Tools.Hangfire\Bryan.Tools.Hangfire.csproj", "{0C4AF2FF-85C2-4260-8886-C9D4BA375A9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Tools.AspNetCore", "Foundation\Bryan.Tools.AspNetCore\Bryan.Tools.AspNetCore.csproj", "{588B512D-D08B-4CA7-A9D9-F0A4940876A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{E4253793-EEF0-408B-AACA-C3F4A065AF36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -162,6 +166,10 @@ Global
 		{0C4AF2FF-85C2-4260-8886-C9D4BA375A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C4AF2FF-85C2-4260-8886-C9D4BA375A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C4AF2FF-85C2-4260-8886-C9D4BA375A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{588B512D-D08B-4CA7-A9D9-F0A4940876A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{588B512D-D08B-4CA7-A9D9-F0A4940876A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{588B512D-D08B-4CA7-A9D9-F0A4940876A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{588B512D-D08B-4CA7-A9D9-F0A4940876A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,6 +198,7 @@ Global
 		{EE30FB58-022D-40D8-B1BF-56740B297827} = {A59EC422-E5CC-4803-B934-D3B2E5829487}
 		{AF02ECA0-AD17-414A-8DDD-C994F97A4793} = {C63A9C54-7F8C-4B79-9CA6-D21592F70F90}
 		{0C4AF2FF-85C2-4260-8886-C9D4BA375A9D} = {1104EF58-492E-46E7-9B8E-9813DA6B981B}
+		{588B512D-D08B-4CA7-A9D9-F0A4940876A0} = {E4253793-EEF0-408B-AACA-C3F4A065AF36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9903C08E-7AE5-48E1-872F-E99C6D9E0442}
