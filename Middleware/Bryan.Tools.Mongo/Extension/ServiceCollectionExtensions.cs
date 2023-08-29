@@ -25,18 +25,26 @@ public static class MongoExtensions
     /// <param name="services">服务</param>
     /// <param name="configuration">配置</param>
     /// <param name="configure"></param>
-    public static IServiceCollection AddMongoDb(this IServiceCollection services, IConfiguration configuration, Action<MongoOptions> configure = null, string sectionName = null)
+    public static IServiceCollection AddMongoDb(this IServiceCollection services, string sectionName = MongoOptions.SectionName, Action<MongoOptions> configure = null)
     {
-        sectionName ??= MongoOptions.SectionName;
+        using ServiceProvider provider = services.BuildServiceProvider();
+        IConfigurationSection section = (provider.GetRequiredService<IConfiguration>() ?? throw new ArgumentNullException("IConfiguration")).GetSection(sectionName);
+        if (!section.Exists())
+        {
+            throw new Exception($"Config file not exist {sectionName} section.");
+        }
+        MongoOptions option = section.Get<MongoOptions>();
+        if (option == null)
+        {
+            throw new Exception($"Get {sectionName} option from config file failed.");
+        }
 
-        //注入mongo配置
         services.AddOptions<MongoOptions>()
-            .Bind(configuration.GetSection(sectionName))
+            .Bind(section)
             .ValidateDataAnnotations();
 
         services.PostConfigure<MongoOptions>(x =>
         {
-            //配置BsonChunkPool 
             if (x.BsonChunkPool != null)
             {
                 BsonChunkPool.Default = x.BsonChunkPool;
@@ -44,18 +52,15 @@ public static class MongoExtensions
             configure?.Invoke(x);
         });
 
-        var options = configuration.GetSection(MongoOptions.SectionName).Get<MongoOptions>();
 
-        //注入mongo客户端
-        services.TryAddSingleton<IMongoClient>(x => new MongoClient(options.Connection));
+        services.TryAddSingleton<IMongoClient>(x => new MongoClient(option.Connection));
 
         //注入mongo默认数据库
-        services.TryAddSingleton<IMongoDatabase>(x => x.GetRequiredService<IMongoClient>().GetDatabase(options.DatabaseName));
+        services.TryAddSingleton<IMongoDatabase>(x => x.GetRequiredService<IMongoClient>().GetDatabase(option.DatabaseName));
 
         //自动创建和删除索引
         services.AddSingleton<IHostedService, MongoIndexHostService>();
 
-        //注入仓储实现
         services.TryAddSingleton(typeof(IMongoRepository<>), typeof(MongoRepository<>));
 
         var types = DiHelper.GetTypes(typeof(IMongoRepository));

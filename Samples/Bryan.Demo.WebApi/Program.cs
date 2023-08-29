@@ -10,11 +10,11 @@ builder.Services.AddServiceAccessor();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddException();
-//builder.Services.AddMongoDb(config);
+//builder.Services.AddMongoDb();
 //builder.Services.AddElastic(config);
 builder.Services.AddSwagger();
 builder.Services.AddSpeechRecognition();
-builder.Services.AddHangfire(config);
+//builder.Services.AddHangfire(config);
 //builder.Services.AddCaching();
 
 var app = builder.Build();
