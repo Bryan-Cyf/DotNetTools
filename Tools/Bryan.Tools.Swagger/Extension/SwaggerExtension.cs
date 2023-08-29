@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using System.Collections.Generic;
 
 namespace Tools.Swagger
 {
@@ -12,24 +14,20 @@ namespace Tools.Swagger
         /// <param name="pathBase">不需要带/</param>
         internal static IApplicationBuilder UseSwaggerz(this IApplicationBuilder app)
         {
-            var options = app.ApplicationServices.GetRequiredService<IOptions<SwaggerOptions>>().Value;
-
-            app.UseSwagger(x =>
+            var option = app.ApplicationServices.GetRequiredService<IOptions<SwaggerOptions>>().Value;
+            if (option.IsOpen)
             {
-                x.RouteTemplate = $"{options.RoutePrefix}/{{documentName}}/swagger.json";
-                options.ConfigareSwaggerOptions?.Invoke(x);
-            });
-
-            app.UseSwaggerUI(c =>
-            {
-                var url = string.IsNullOrEmpty(options.PathBase) ? $"/{options.RoutePrefix}/v1/swagger.json" : $"/{options.PathBase}/{options.RoutePrefix}/v1/swagger.json";
-                c.SwaggerEndpoint(url, "api v1");
-                c.RoutePrefix = $"{options.RoutePrefix}";
-
-                c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
-
-                options.ConfigareSwaggerUIOptions?.Invoke(c);
-            });
+                option.Infos ??= new List<OpenApiInfo>();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    option.Infos.ForEach(info =>
+                    {
+                        c.SwaggerEndpoint($"/swagger/{info.Version}/swagger.json", info.Title);
+                    });
+                    c.RoutePrefix = option.RoutePrefix;
+                });
+            }
             return app;
         }
     }

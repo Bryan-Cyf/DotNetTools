@@ -2,6 +2,13 @@
   "Swagger": {
     "IsOpen": true,
     "RoutePrefix": "swagger",
-    "IncludeXmlComments": [ "Bryan.Demo.WebApi.xml" ]
+    "IncludeXmlComments": [ "Bryan.Demo.WebApi.xml" ],
+    "Infos": [
+      {
+        "Version": "v1",
+        "Title": "Api接口文档",
+        "Description": "v1版本"
+      }
+    ]
   }
 }

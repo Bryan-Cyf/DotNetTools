@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddException();
 //builder.Services.AddMongoDb(config);
 //builder.Services.AddElastic(config);
-builder.Services.AddSwagger(config);
+builder.Services.AddSwagger();
 builder.Services.AddSpeechRecognition(config);
 //builder.Services.AddHangfire(config);
 //builder.Services.AddCaching(config);
