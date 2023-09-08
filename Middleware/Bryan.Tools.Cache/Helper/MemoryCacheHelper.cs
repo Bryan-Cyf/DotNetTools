@@ -26,7 +26,7 @@ namespace Tools.Cache
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string GetString(string key)
+        public static string Get(string key)
         {
             return _memoryCache.Get(key)?.ToString();
         }

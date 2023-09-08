@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyCaching.Core;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -63,5 +64,19 @@ namespace Tools.Cache
         /// <param name="cacheKey">缓存键</param>
         /// <returns></returns>
         Task<long> HLenAsync(string cacheKey);
+
+
+        /// <summary>
+        ///根据前缀查询
+        /// </summary>
+        IDictionary<string, CacheValue<T>> GetByPrefix<T>(string key);
+
+        Task<IDictionary<string, CacheValue<T>>> GetByPrefixAsync<T>(string key);
+
+        /// <summary>
+        ///根据前缀查询数量
+        /// </summary>
+        int GetCount<T>(string key = "");
+        Task<int> GetCountAsync<T>(string key = "");
     }
 }

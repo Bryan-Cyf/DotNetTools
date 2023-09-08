@@ -1,5 +1,6 @@
 ﻿using EasyCaching.Core;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Tools.Cache
@@ -105,9 +106,26 @@ namespace Tools.Cache
             return result.Value;
         }
 
+        public IDictionary<string, CacheValue<T>> GetByPrefix<T>(string key)
+        {
+            var result = Provider.GetByPrefix<T>(key);
+            return result;
+        }
+
+        public int GetCount<T>(string key = "")
+        {
+            var result = Provider.GetCount(key);
+            return result;
+        }
         #endregion
 
         #region 异步 Async
+
+        public async Task<int> GetCountAsync<T>(string key = "")
+        {
+            var result = await Provider.GetCountAsync(key);
+            return result;
+        }
 
         /// <summary>
         /// 是否存在指定键的缓存
@@ -147,6 +165,12 @@ namespace Tools.Cache
         {
             var result = await Provider.GetAsync<T>(key);
             return result.Value;
+        }
+
+        public async Task<IDictionary<string, CacheValue<T>>> GetByPrefixAsync<T>(string key)
+        {
+            var result = await Provider.GetByPrefixAsync<T>(key);
+            return result;
         }
 
         /// <summary>

@@ -86,12 +86,14 @@ public static class ServiceCollectionExtensions
                 });
             }
 
-            //解决时间非本地时间的问题
-            x.WithMessagePack(x =>
-            {
-                x.EnableCustomResolver = true;
-                x.CustomResolvers = CompositeResolver.Create(NativeDateTimeResolver.Instance, ContractlessStandardResolver.Instance);
-            }, CacheConst.SerializerName);
+            x.WithJson(CacheConst.SerializerName);
+
+            ////解决时间非本地时间的问题
+            //x.WithMessagePack(x =>
+            //{
+            //    x.EnableCustomResolver = true;
+            //    x.CustomResolvers = CompositeResolver.Create(NativeDateTimeResolver.Instance, ContractlessStandardResolver.Instance);
+            //}, CacheConst.SerializerName);
 
         });
 
